@@ -1,16 +1,17 @@
 // import dayjs from 'dayjs';
 
-async function fetchJson(url) {
-    const response = await fetch(url);
-    const obj = await response.json();
-    return obj;
-};
+// async function fetchJson(url) {
+//     const response = await fetch(url);
+//     const obj = await response.json();
+//     return obj;
+// };
 
 async function getChefBirthday(id) {
     let ricetta;
 
     try {
-        ricetta = await fetchJson(`https://dummyjson.com/recipes/${id}`);
+        const response = await fetch(`https://dummyjson.com/recipes/${id}`);
+        ricetta = await response.json();
     } catch (error) {
         throw new Error("Errore nel trovare la ricetta", error.message);
     };
@@ -22,7 +23,8 @@ async function getChefBirthday(id) {
     let user;
 
     try {
-        user = await fetchJson(`https://dummyjson.com/users/${ricetta.userId}`);
+        const response = await fetch(`https://dummyjson.com/users/${ricetta.userId}`);
+        user = await response.json();
     } catch (error) {
         throw new Error("Errore nel trovare l'user", error.message);
     };
