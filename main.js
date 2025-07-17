@@ -16,7 +16,7 @@ async function getChefBirthday(id) {
         throw new Error("Errore nel trovare la ricetta", error.message);
     };
 
-    if (ricetta.message) {
+    if (!ricetta) {
         throw new Error(`Ricetta con id ${id} non trovata`);
     };
 
@@ -29,7 +29,7 @@ async function getChefBirthday(id) {
         throw new Error("Errore nel trovare l'user", error.message);
     };
 
-    if (user.message) {
+    if (!user) {
         throw new Error(`User con id ${ricetta.userId} non trovato`);
     };
 
